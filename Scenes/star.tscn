@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c0io8xy5mg5d4"]
+
+[ext_resource type="Script" uid="uid://c7d5n6eiut2g8" path="res://Scripts/star.gd" id="1_3vu41"]
+[ext_resource type="Material" uid="uid://bij5cjr46fjbh" path="res://Materials/stars.tres" id="1_d0spr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_levfs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d0spr"]
+
+[node name="star" type="StaticBody3D" unique_id=473744307]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_3vu41")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=847236649]
+material_override = ExtResource("1_d0spr")
+mesh = SubResource("BoxMesh_levfs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=616289315]
+transform = Transform3D(0.7177375, 0, 0.6963138, 0.51509714, 0.67288345, -0.53094524, -0.46853805, 0.73974854, 0.4829537, 0, 0, 0)
+material_override = ExtResource("1_d0spr")
+mesh = SubResource("BoxMesh_levfs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=724889410]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+shape = SubResource("SphereShape3D_d0spr")

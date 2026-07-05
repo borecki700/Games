@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bbpaab6y8fqei"]
+
+[ext_resource type="Script" uid="uid://d5v1aj0jm06i" path="res://Scripts/paper.gd" id="1_thabk"]
+[ext_resource type="AudioStream" uid="uid://bvxvsuyaf3ug5" path="res://Sounds/paper-245786.mp3" id="2_c7gsp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4urcx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_thabk"]
+size = Vector3(1.3320313, 0.06524658, 1)
+
+[node name="Paper" type="StaticBody3D" unique_id=1241286531]
+script = ExtResource("1_thabk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=679242268]
+transform = Transform3D(0.6598984, 0, 0, 0, 1, 0, 0, 0, 0.49184144, 0, 0, 0)
+mesh = SubResource("PlaneMesh_4urcx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1304899819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001953125, 0.0043640137, 0)
+shape = SubResource("BoxShape3D_thabk")
+
+[node name="toggle" type="AudioStreamPlayer3D" parent="." unique_id=1037854726]
+stream = ExtResource("2_c7gsp")

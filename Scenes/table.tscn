@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://d1xf5vwigjc4t"]
+
+[ext_resource type="Material" uid="uid://ddn5t64rijnvm" path="res://Materials/table.tres" id="1_ix8et"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qod8c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ix8et"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4ppvu"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 1.0
+
+[node name="table" type="Node3D" unique_id=230948074]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=659267932]
+transform = Transform3D(2.2478366, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=134519038]
+shape = SubResource("BoxShape3D_qod8c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=385372276]
+transform = Transform3D(2.2512193, 0, 0, 0, 0.13795906, 0, 0, 0, 1, 0, 0.43063366, 0)
+material_override = ExtResource("1_ix8et")
+mesh = SubResource("BoxMesh_ix8et")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1481519664]
+transform = Transform3D(1, 0, 0, 0, 0.8949584, 0, 0, 0, 1, -0.8776339, -0.04789892, 0.38808692)
+material_override = ExtResource("1_ix8et")
+mesh = SubResource("CylinderMesh_4ppvu")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=2101233697]
+transform = Transform3D(1, 0, 0, 0, 0.8949584, 0, 0, 0, 1, 0.85292363, -0.04789892, 0.38808692)
+material_override = ExtResource("1_ix8et")
+mesh = SubResource("CylinderMesh_4ppvu")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=274267219]
+transform = Transform3D(1, 0, 0, 0, 0.8949584, 0, 0, 0, 1, 0.85292363, -0.04789892, -0.37919986)
+material_override = ExtResource("1_ix8et")
+mesh = SubResource("CylinderMesh_4ppvu")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1346458940]
+transform = Transform3D(1, 0, 0, 0, 0.8949584, 0, 0, 0, 1, -0.8776339, -0.04789892, -0.37606108)
+material_override = ExtResource("1_ix8et")
+mesh = SubResource("CylinderMesh_4ppvu")

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cmc5xnv3wi00i"]
+
+[ext_resource type="Material" uid="uid://cmvpp0wh8tasv" path="res://Materials/flashlight.tres" id="1_1lkl7"]
+[ext_resource type="Script" uid="uid://dnksum8n6nnkq" path="res://Scripts/gate.gd" id="1_hn85u"]
+
+[sub_resource type="Animation" id="Animation_t224d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("static_gate:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1lkl7"]
+resource_name = "open_gate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("static_gate:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 10, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hn85u"]
+_data = {
+&"RESET": SubResource("Animation_t224d"),
+&"open_gate": SubResource("Animation_1lkl7")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_kfxhe"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4dmbs"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="gate" type="Node3D" unique_id=553409354]
+script = ExtResource("1_hn85u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1824377010]
+libraries/ = SubResource("AnimationLibrary_hn85u")
+
+[node name="static_gate" type="StaticBody3D" parent="." unique_id=1285800207]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="static_gate" unique_id=823543116]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("1_1lkl7")
+mesh = SubResource("BoxMesh_kfxhe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="static_gate" unique_id=1393452558]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_4dmbs")

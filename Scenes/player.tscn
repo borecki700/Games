@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dvjhj06du87n"]
+
+[ext_resource type="Script" uid="uid://ce51010vf34g8" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="AudioStream" uid="uid://bxebq83nebq7y" path="res://Sounds/data_pion-st1-footstep-sfx-323053.mp3" id="2_8erm5"]
+[ext_resource type="Script" uid="uid://dkc0ni152a5lo" path="res://Scripts/camera.gd" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://bcbgl5oppbqst" path="res://Scripts/flashlight.gd" id="3_6t5aa"]
+[ext_resource type="AudioStream" uid="uid://bfft5h50pq7q2" path="res://Sounds/data_pion-st2-footstep-sfx-323055.mp3" id="3_f1ek2"]
+[ext_resource type="AudioStream" uid="uid://bcdhgvrphmmoj" path="res://Sounds/flashlight-clicking-on-105809.mp3" id="4_fkybt"]
+[ext_resource type="AudioStream" uid="uid://tybrigigqrj6" path="res://Sounds/data_pion-st3-footstep-sfx-323056.mp3" id="4_tx1dd"]
+[ext_resource type="Script" uid="uid://ksdi5xwimyuk" path="res://Scripts/raycast.gd" id="4_vgqql"]
+[ext_resource type="AudioStream" uid="uid://f80yjv5fjy1o" path="res://Sounds/run-st1-footstep-sfx-323053.mp3" id="5_gymyn"]
+[ext_resource type="AudioStream" uid="uid://nxqastogf648" path="res://Sounds/run-st2-footstep-sfx-323055.mp3" id="6_pu2lt"]
+[ext_resource type="AudioStream" uid="uid://bqsi0yspwhbwv" path="res://Sounds/run-st3-footstep-sfx-323056.mp3" id="7_ukyrk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_v0iea"]
+
+[node name="Player" type="CharacterBody3D" unique_id=2008120505]
+collision_mask = 3
+floor_max_angle = 1.134464
+script = ExtResource("1_v0iea")
+walk_footsteps = Array[AudioStream]([ExtResource("2_8erm5"), ExtResource("3_f1ek2"), ExtResource("4_tx1dd")])
+sprint_footsteps = Array[AudioStream]([ExtResource("5_gymyn"), ExtResource("6_pu2lt"), ExtResource("7_ukyrk")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1594980470]
+shape = SubResource("CapsuleShape3D_f60y1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1368226286]
+visible = false
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_v0iea")
+
+[node name="Head" type="Node3D" parent="." unique_id=1392401955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40136963, 0)
+script = ExtResource("2_cvnsp")
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=806832529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24604297, 0)
+cull_mask = 1032191
+
+[node name="Flashlight" type="SpotLight3D" parent="Head" unique_id=1752823738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1416089, 0)
+visible = false
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 15.0
+spot_angle = 30.0
+script = ExtResource("3_6t5aa")
+
+[node name="toggle" type="AudioStreamPlayer3D" parent="Head/Flashlight" unique_id=1039463859]
+stream = ExtResource("4_fkybt")
+
+[node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=271235959]
+transform = Transform3D(2.1406226, 0, 0, 0, -8.022264e-08, -2.4210467, 0, 1.83528, -1.0582731e-07, 0, 0.24399841, -0.012248337)
+collision_mask = 3
+script = ExtResource("4_vgqql")
+
+[node name="footstep_sound" type="AudioStreamPlayer3D" parent="." unique_id=137009577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9321186, 0)
+max_distance = 5.0

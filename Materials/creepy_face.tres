@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bprn3i645d0k4"]
+
+[ext_resource type="Texture2D" uid="uid://btyd0a2obgs12" path="res://Textures/creepy_face.png" id="1_5gwfk"]
+
+[resource]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_5gwfk")

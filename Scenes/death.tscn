@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dr8gqc5pi67md"]
+
+[ext_resource type="Script" uid="uid://dxbvuiq317h7w" path="res://Scripts/death.gd" id="1_g62mh"]
+[ext_resource type="AudioStream" uid="uid://byh7lfccfuh2k" path="res://Sounds/lamp_noise.mp3" id="2_mna5k"]
+
+[node name="Death" type="Control" unique_id=1617982300]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g62mh")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=609143793]
+layout_mode = 0
+offset_right = 1194.0
+offset_bottom = 676.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1042940248]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 174.0
+offset_right = 713.0
+offset_bottom = 274.0
+theme_override_font_sizes/normal_font_size = 60
+text = "DEATH"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=846254255]
+stream = ExtResource("2_mna5k")
+autoplay = true

@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bio6vdh4evss3"]
+
+[ext_resource type="Texture2D" uid="uid://b3l0t2kwwonb1" path="res://Textures/NormalMap.png" id="1_lcv6a"]
+
+[resource]
+albedo_color = Color(0.039290145, 0.09583279, 0, 1)
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = ExtResource("1_lcv6a")
+ao_enabled = true
+ao_light_affect = 0.7
+ao_texture = ExtResource("1_lcv6a")

@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bfkv8aojcbc1i"]
+
+[ext_resource type="Script" uid="uid://ddpx2t1033ty7" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://2ggpgpuqcdg0" path="res://Textures/original-a4722e52909ea7f0f9cd714deab36f3a.webp" id="1_48xlc"]
+[ext_resource type="Texture2D" uid="uid://df02demqwwfj4" path="res://icon.svg" id="2_1ehe0"]
+
+[node name="Main_menu" type="Control" unique_id=1219630264]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ehe0")
+
+[node name="background" type="ColorRect" parent="." unique_id=1623998093]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(29.297934, 17.271461)
+color = Color(0, 0, 0, 1)
+
+[node name="game_logo" type="TextureRect" parent="." unique_id=2048163804]
+layout_mode = 0
+offset_left = 218.0
+offset_top = -163.0
+offset_right = 1402.3752
+offset_bottom = 1077.0
+scale = Vector2(0.63999987, 0.4)
+texture = ExtResource("1_48xlc")
+
+[node name="play" type="Button" parent="." unique_id=471534802]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 176.0
+offset_right = 613.0
+offset_bottom = 239.0
+scale = Vector2(1.8399987, 1.4800012)
+theme_override_font_sizes/font_size = 40
+text = "Play"
+
+[node name="settings" type="Button" parent="." unique_id=893365481]
+layout_mode = 0
+offset_left = 462.00006
+offset_top = 298.0
+offset_right = 625.00006
+offset_bottom = 361.0
+scale = Vector2(1.8399987, 1.4800012)
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+
+[node name="credits" type="Button" parent="." unique_id=461330504]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 410.0
+offset_right = 621.0
+offset_bottom = 473.0
+scale = Vector2(1.8399987, 1.4800012)
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+
+[node name="quit" type="Button" parent="." unique_id=2051754738]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 519.00006
+offset_right = 606.0
+offset_bottom = 582.00006
+scale = Vector2(1.8399987, 1.4800012)
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[node name="dev_logo" type="TextureRect" parent="." unique_id=320239712]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 517.0
+offset_right = 136.0
+offset_bottom = 645.0
+texture = ExtResource("2_1ehe0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1743663130]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 602.0
+offset_right = 1157.0
+offset_bottom = 641.0
+text = "Made by heraxit"
+
+[connection signal="pressed" from="play" to="." method="play"]
+[connection signal="pressed" from="quit" to="." method="quit"]

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cwhgredhmkbbw"]
+
+[ext_resource type="PackedScene" uid="uid://dvjhj06du87n" path="res://Scenes/player.tscn" id="1_skmq4"]
+[ext_resource type="PackedScene" uid="uid://ddpj65wk7gt38" path="res://Scenes/ui.tscn" id="2_au00k"]
+[ext_resource type="PackedScene" uid="uid://c7qmg4pax0axg" path="res://Scenes/physics_door.tscn" id="3_707cn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_au00k"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_707cn"]
+sky_material = SubResource("ProceduralSkyMaterial_au00k")
+
+[sub_resource type="Environment" id="Environment_mq1bj"]
+background_mode = 2
+sky = SubResource("Sky_707cn")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3qbn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lc1oi"]
+
+[node name="test_world" type="Node3D" unique_id=2091656771]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=619976150]
+environment = SubResource("Environment_mq1bj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1734904988]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=983173745]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=779377928]
+mesh = SubResource("BoxMesh_o3qbn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1668344221]
+shape = SubResource("BoxShape3D_lc1oi")
+
+[node name="Player" parent="." unique_id=2008120505 instance=ExtResource("1_skmq4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5768204, 1.7995825, -2.1852765)
+
+[node name="UI" parent="." unique_id=1640950211 instance=ExtResource("2_au00k")]
+visible = false
+
+[node name="Physics_door" parent="." unique_id=259030961 instance=ExtResource("3_707cn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79088545, 1.6038666, 2.0525723)

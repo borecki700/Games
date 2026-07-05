@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://be8t0tlw7nrv2"]
+
+[ext_resource type="Script" uid="uid://fbgwwlgpqro2" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
+
+[node name="Pause_menu" type="Control" unique_id=2114864968]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_emv3i")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1195708804]
+layout_mode = 0
+offset_right = 1241.0
+offset_bottom = 714.0
+mouse_filter = 1
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1436147095]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 25.0
+offset_right = 694.0
+offset_bottom = 110.0
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 50
+text = "Pause"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1993827909]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 224.0
+offset_right = 704.0
+offset_bottom = 736.0
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=468551013]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=2111077785]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=966898547]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Controls
+"
+
+[node name="Button4" type="Button" parent="VBoxContainer" unique_id=114398705]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Back to menu"
+
+[node name="Button5" type="Button" parent="VBoxContainer" unique_id=597072475]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="resume"]
+[connection signal="pressed" from="VBoxContainer/Button4" to="." method="back_to_menu"]
+[connection signal="pressed" from="VBoxContainer/Button5" to="." method="quit"]

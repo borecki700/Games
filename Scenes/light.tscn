@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://t46ut62b04cl"]
+
+[ext_resource type="Material" uid="uid://mfmbm7b6vbkg" path="res://Materials/light.tres" id="1_veqsg"]
+[ext_resource type="Script" uid="uid://c2njktcetn05o" path="res://Scripts/light.gd" id="1_wh1uv"]
+[ext_resource type="AudioStream" uid="uid://byh7lfccfuh2k" path="res://Sounds/lamp_noise.mp3" id="3_hsho4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wh1uv"]
+
+[sub_resource type="Animation" id="Animation_hsho4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_wh1uv"]
+resource_name = "flashing_light"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.7, 0.9, 1.12, 1.32, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.4, 0.9, 0.2, 1.0, 0.2, 0.67, 0.14, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hsho4"]
+_data = {
+&"RESET": SubResource("Animation_hsho4"),
+&"flashing_light": SubResource("Animation_wh1uv")
+}
+
+[node name="light" type="Node3D" unique_id=693876600]
+script = ExtResource("1_wh1uv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=587798582]
+material_override = ExtResource("1_veqsg")
+cast_shadow = 0
+mesh = SubResource("SphereMesh_wh1uv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=842267246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.960265, 0)
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=444378774]
+libraries/ = SubResource("AnimationLibrary_hsho4")
+
+[node name="flicker_sound" type="AudioStreamPlayer3D" parent="." unique_id=553882357]
+stream = ExtResource("3_hsho4")
+volume_db = 5.0

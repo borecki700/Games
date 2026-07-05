@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://ddpj65wk7gt38"]
+
+[ext_resource type="Script" uid="uid://k37jakp4hduv" path="res://Scripts/ui.gd" id="1_jxero"]
+
+[node name="UI" type="Control" unique_id=1640950211]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jxero")
+
+[node name="sprint_slider" type="HSlider" parent="." unique_id=328137468]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 568.0
+offset_right = 821.0
+offset_bottom = 620.0
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="interact_txt" type="RichTextLabel" parent="." unique_id=191152702]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 17.0
+offset_right = 329.0
+offset_bottom = 104.0
+theme_override_font_sizes/normal_font_size = 40
+text = "[E] Interact"
+
+[node name="paper" type="TextureRect" parent="." unique_id=2003354689]
+visible = false
+layout_mode = 0
+offset_left = 427.0
+offset_top = 55.000008
+offset_right = 555.0
+offset_bottom = 183.0
+scale = Vector2(2.619434, 3.7544456)
+expand_mode = 1
+
+[node name="flashlight_stuff" type="Control" parent="." unique_id=989662354]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="energy_slider" type="HSlider" parent="flashlight_stuff" unique_id=2105746454]
+layout_mode = 0
+offset_left = 915.0
+offset_top = 50.0
+offset_right = 1141.0
+offset_bottom = 113.0
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="flashlight_txt" type="RichTextLabel" parent="flashlight_stuff" unique_id=1428752938]
+layout_mode = 0
+offset_left = 957.0
+offset_top = 33.0
+offset_right = 1123.0
+offset_bottom = 67.0
+text = "Flashlight Energy:"
+
+[node name="stars_scored" type="RichTextLabel" parent="." unique_id=2038240247]
+layout_mode = 0
+offset_left = 1008.0
+offset_top = 28.0
+offset_right = 1116.0
+offset_bottom = 98.0
+theme_override_font_sizes/normal_font_size = 40
+text = "0/8"
