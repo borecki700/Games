@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkm3nn1cxwyfh"]
+
+[ext_resource type="Script" uid="uid://bn5hl7q15nv0e" path="res://menu.gd" id="1_1rerr"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1rerr")
+
+[node name="Label_menu" type="Label" parent="."]
+layout_mode = 0
+offset_left = 385.0
+offset_top = 86.0
+offset_right = 434.0
+offset_bottom = 109.0
+scale = Vector2(8.04, 6.12)
+text = "MENU"
+
+[node name="Stat_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 307.00003
+offset_right = 542.0
+offset_bottom = 338.00003
+scale = Vector2(2.88, 2.7600012)
+text = "Start Game"
+
+[node name="Quit_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 431.0
+offset_right = 456.0
+offset_bottom = 439.0
+scale = Vector2(2.9200025, 2.5599988)
+text = "Quit Game"
+
+[connection signal="pressed" from="Stat_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Quit_button" to="." method="_on_quit_button_pressed"]

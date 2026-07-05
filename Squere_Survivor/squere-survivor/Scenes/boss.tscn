@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://clypwkgvbite"]
+
+[ext_resource type="PackedScene" uid="uid://duyq5t5mkja04" path="res://Scenes/enemy.tscn" id="1_0154r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0154r"]
+size = Vector2(60, 47)
+
+[node name="Boss" instance=ExtResource("1_0154r")]
+speed = 75.0
+health = 5
+points_value = 5
+
+[node name="Polygon2D" parent="." index="0"]
+scale = Vector2(10, 7.878)
+color = Color(0.90613884, 0.26209825, 0.9470003, 1)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_0154r")

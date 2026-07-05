@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://depdxr4sllql2"]
+
+[ext_resource type="PackedScene" uid="uid://duyq5t5mkja04" path="res://Scenes/enemy.tscn" id="1_cxytt"]
+
+[node name="FastEnemy" instance=ExtResource("1_cxytt")]
+speed = 200.0
+points_value = 2
+
+[node name="Polygon2D" parent="." index="0"]
+color = Color(9.26517e-07, 0.50516, 0.076323174, 1)

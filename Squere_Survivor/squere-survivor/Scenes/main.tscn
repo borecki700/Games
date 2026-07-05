@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo3832dbb3036"]
+
+[ext_resource type="PackedScene" uid="uid://bynvd6flcheas" path="res://Scenes/player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://bu2qyvjotgaxq" path="res://Scenes/spawner.tscn" id="3_8gbba"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_bo1nx"]
+a = Vector2(0.9999695, -21.56667)
+b = Vector2(3.0517578e-05, 17.833336)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(62, 40)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(62, 40)
+
+[node name="Spawner" parent="." instance=ExtResource("3_8gbba")]
+
+[node name="Corners" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Corners"]
+position = Vector2(0, 364)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corners/StaticBody2D"]
+rotation = 1.5707964
+scale = Vector2(1, 29.999996)
+shape = SubResource("SegmentShape2D_bo1nx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Corners/StaticBody2D"]
+position = Vector2(0, -648)
+rotation = 1.5707964
+scale = Vector2(1, 29.999996)
+shape = SubResource("SegmentShape2D_bo1nx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Corners/StaticBody2D"]
+position = Vector2(638, -345.00006)
+scale = Vector2(1, 29.999996)
+shape = SubResource("SegmentShape2D_bo1nx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Corners/StaticBody2D"]
+position = Vector2(-515, -364)
+scale = Vector2(1, 29.999996)
+shape = SubResource("SegmentShape2D_bo1nx")

@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvxs2ej0tpca7"]
+
+[ext_resource type="Script" uid="uid://c6f8d4c2ilus5" path="res://game_over.gd" id="1_ojehl"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ojehl")
+
+[node name="Label_game_over" type="Label" parent="."]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 112.0
+offset_right = 441.0
+offset_bottom = 135.0
+scale = Vector2(5.208386, 5.4280276)
+text = "GAME OVER"
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 290.0
+offset_right = 610.0
+offset_bottom = 339.0
+scale = Vector2(1.6800025, 1.6400006)
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 407.0
+offset_right = 513.0
+offset_bottom = 438.0
+scale = Vector2(4.398993, 2.9724088)
+text = "Restart"
+
+[node name="Menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 514.0
+offset_right = 519.0
+offset_bottom = 545.0
+scale = Vector2(4.398993, 2.9724088)
+text = "Menu
+"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
