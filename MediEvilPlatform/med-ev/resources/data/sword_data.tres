@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dysm6nlc6cnrx"]
+
+[ext_resource type="Script" uid="uid://cikwx32n4770b" path="res://resources/weapon_data.gd" id="1_nxie6"]
+
+[resource]
+script = ExtResource("1_nxie6")
+combo_windows = Array[float]([0.6, 0.6, 0.8])
+combo_durations = Array[float]([1.5, 1.5, 2.5])
+metadata/_custom_type_script = "uid://cikwx32n4770b"

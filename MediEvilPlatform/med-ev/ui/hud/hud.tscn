@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bd27lgs646f6s"]
+
+[ext_resource type="Script" uid="uid://b6wfj11i04y7e" path="res://ui/hud/hud.gd" id="1_e0nub"]
+[ext_resource type="PackedScene" uid="uid://x0mi8jqm3kdx" path="res://ui/hud/player_health_bar/player_health_bar.tscn" id="2_w75iv"]
+[ext_resource type="PackedScene" uid="uid://d2ohdt0d4x6jn" path="res://ui/hud/enemy_health_bar/enemy_health_bar.tscn" id="3_imuuq"]
+[ext_resource type="PackedScene" uid="uid://dwo48r4whvtbr" path="res://ui/hud/lock_on_marker/lock_on_marker.tscn" id="4_w75iv"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1116089809]
+layer = 100
+script = ExtResource("1_e0nub")
+
+[node name="PlayerHealthBar" parent="." unique_id=1087594025 instance=ExtResource("2_w75iv")]
+
+[node name="EnemyHealthBar" parent="." unique_id=1808121479 instance=ExtResource("3_imuuq")]
+offset_left = 20.0
+offset_top = 609.0
+offset_right = 170.0
+offset_bottom = 649.0
+
+[node name="LockOnMarker" parent="." unique_id=985032313 instance=ExtResource("4_w75iv")]

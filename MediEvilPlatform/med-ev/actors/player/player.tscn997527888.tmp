@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cpyefo2qvd21y"]
+
+[ext_resource type="Script" uid="uid://ck1v5s3myiak1" path="res://actors/player/player.gd" id="1_nvxhs"]
+[ext_resource type="Script" uid="uid://cb1noomdm4uwi" path="res://actors/player/components/movement_component.gd" id="2_ilk7j"]
+[ext_resource type="Script" uid="uid://dv3gl1g6uvfht" path="res://actors/player/components/health_component.gd" id="3_ax26v"]
+[ext_resource type="Script" uid="uid://dps4p4rcpaadd" path="res://actors/player/states/idle_state.gd" id="4_6p1w3"]
+[ext_resource type="Script" uid="uid://c07y1t13b2cuu" path="res://actors/player/camera/camera_controller.gd" id="4_lsqbn"]
+[ext_resource type="Script" uid="uid://ba5qqvqt0enrc" path="res://actors/player/states/walk_state.gd" id="5_15y17"]
+[ext_resource type="Script" uid="uid://ckywejyh477tv" path="res://actors/player/states/sprint_state.gd" id="6_bop6h"]
+[ext_resource type="Script" uid="uid://droq64obq4oau" path="res://actors/player/states/jump_state.gd" id="7_a744p"]
+[ext_resource type="Script" uid="uid://dtasnk161o537" path="res://actors/player/states/fall_state.gd" id="8_388e2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_388e2"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lsln6"]
+radius = 0.35
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" unique_id=352065347]
+script = ExtResource("1_nvxhs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1833966013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_388e2")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=1914644678]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals" unique_id=1284279192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_lsln6")
+
+[node name="Components" type="Node" parent="." unique_id=1923469592]
+
+[node name="MovementComponent" type="Node" parent="Components" unique_id=1661991254]
+script = ExtResource("2_ilk7j")
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=1072001097]
+script = ExtResource("3_ax26v")
+
+[node name="CombatComponent" type="Node" parent="Components" unique_id=1833870373]
+
+[node name="StateMachine" type="Node" parent="." unique_id=785787991]
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1362377806]
+script = ExtResource("4_6p1w3")
+
+[node name="WalkState" type="Node" parent="StateMachine" unique_id=257062369]
+script = ExtResource("5_15y17")
+
+[node name="SprintState" type="Node" parent="StateMachine" unique_id=405114298]
+script = ExtResource("6_bop6h")
+
+[node name="JumpState" type="Node" parent="StateMachine" unique_id=1358366555]
+script = ExtResource("7_a744p")
+
+[node name="FallState" type="Node" parent="StateMachine" unique_id=2119595127]
+script = ExtResource("8_388e2")
+
+[node name="CameraRig" type="Node3D" parent="." unique_id=674802901]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraRig" unique_id=1112004359]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, 0)
+spring_length = 6.0
+margin = 0.3
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig/SpringArm3D" unique_id=1566068752]
+current = true
+near = 0.1
+far = 300.0
+script = ExtResource("4_lsqbn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=288976645]

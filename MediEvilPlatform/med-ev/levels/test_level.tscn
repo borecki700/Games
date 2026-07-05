@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bt6bsf0ia5lp7"]
+
+[ext_resource type="PackedScene" uid="uid://cpyefo2qvd21y" path="res://actors/player/player.tscn" id="1_46lwt"]
+[ext_resource type="PackedScene" uid="uid://chxqav8qg36de" path="res://actors/enemies/skeleton/skeleton.tscn" id="2_x25rp"]
+[ext_resource type="PackedScene" uid="uid://bd27lgs646f6s" path="res://ui/hud/hud.tscn" id="3_gmgay"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gmgay"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_w7r7j"]
+sky_material = SubResource("ProceduralSkyMaterial_gmgay")
+
+[sub_resource type="Environment" id="Environment_o6mel"]
+background_mode = 2
+sky = SubResource("Sky_w7r7j")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_x25rp"]
+vertices = PackedVector3Array(2.5, 0.5, -2.25, 3, 0.5, -2.5, 3, 0.5, -14.5, -14.5, 0.5, -14.5, -14.5, 0.5, 0, 2.5, 0.5, 0, 7.5, 0.5, -2.5, 7.75, 0.5, 0.75, 14.5, 0.5, 1, 14.5, 0.5, -14.5, -3.5, 3.25, -6.5, -3.5, 3.25, -3.5, -0.25, 3.25, -3.5, -0.25, 3.25, -6.5, 3.5, 2, -1.5, 3.5, 2, 1.5, 6.5, 2, 1.5, 6.5, 2, -1.5, 2.25, 0.5, 14.5, 2.5, 0.5, 2.25, -14.5, 0.5, 14.5, 7.75, 0.5, 2.25, 7.25, 0.5, 2.75, 14.5, 0.5, 14.5, 2.75, 0.5, 2.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(8, 7, 6), PackedInt32Array(6, 1, 2), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 2), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(19, 18, 5), PackedInt32Array(5, 18, 20), PackedInt32Array(5, 20, 4), PackedInt32Array(21, 7, 8), PackedInt32Array(21, 8, 22), PackedInt32Array(22, 8, 23), PackedInt32Array(22, 23, 18), PackedInt32Array(18, 19, 24), PackedInt32Array(22, 18, 24)]
+agent_height = 1.8
+agent_radius = 0.35
+agent_max_climb = 0.4
+
+[node name="TestLevel" type="Node3D" unique_id=1335394211]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1524705977]
+environment = SubResource("Environment_o6mel")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=95833802]
+transform = Transform3D(-0.8660254, -0.3535534, 0.3535534, 0, 0.70710677, 0.70710677, -0.50000006, 0.6123724, -0.6123724, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=352065347 instance=ExtResource("1_46lwt")]
+
+[node name="Skeleton" parent="." unique_id=1001577607 instance=ExtResource("2_x25rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.826806, 0.82149196, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1397243090]
+navigation_mesh = SubResource("NavigationMesh_x25rp")
+
+[node name="Floor" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1072517120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(30, 1, 30)
+
+[node name="Platform" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1736138848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.355649, 0)
+use_collision = true
+size = Vector3(4, 0.5, 4)
+
+[node name="Platform1" type="CSGBox3D" parent="NavigationRegion3D" unique_id=646121373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8379345, 2.576563, -5)
+use_collision = true
+size = Vector3(4, 0.5, 4)
+
+[node name="HUD" parent="." unique_id=1116089809 instance=ExtResource("3_gmgay")]

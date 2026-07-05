@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://chxqav8qg36de"]
+
+[ext_resource type="Script" uid="uid://d12ixk4sc1uut" path="res://actors/enemies/skeleton/skeleton.gd" id="1_lflov"]
+[ext_resource type="Script" uid="uid://dv3gl1g6uvfht" path="res://shared/components/health_component.gd" id="1_mbagl"]
+[ext_resource type="Resource" uid="uid://c5q0tf1q27f4f" path="res://resources/data/skeleton_data.tres" id="2_v2mj8"]
+[ext_resource type="Script" uid="uid://b7dpfdpne11pp" path="res://shared/state_machine/state_machine.gd" id="2_wjcsx"]
+[ext_resource type="Script" uid="uid://vlgbvkno85ma" path="res://actors/enemies/base_enemy/components/navigation_component.gd" id="3_mrd15"]
+[ext_resource type="Script" uid="uid://buksvnn3kal20" path="res://shared/components/hurtbox_component.gd" id="3_wjcsx"]
+[ext_resource type="Script" uid="uid://1owwilanixgx" path="res://actors/enemies/skeleton/states/enemy_idle_state.gd" id="4_q4ubg"]
+[ext_resource type="Script" uid="uid://cktv40hdyh14v" path="res://actors/enemies/base_enemy/components/enemy_combat_component.gd" id="4_v2mj8"]
+[ext_resource type="Script" uid="uid://ck2ed6mfpa2e2" path="res://actors/enemies/skeleton/states/enemy_patrol_state.gd" id="5_aim1i"]
+[ext_resource type="Script" uid="uid://dd4v3sxn5u3k7" path="res://actors/enemies/skeleton/states/enemy_chase_state.gd" id="6_21072"]
+[ext_resource type="Script" uid="uid://ko0to72gex8s" path="res://shared/components/hit_flash_component.gd" id="6_egiq0"]
+[ext_resource type="Script" uid="uid://do4qvk7ycqace" path="res://actors/enemies/skeleton/states/enemy_attack_state.gd" id="7_ywcv0"]
+[ext_resource type="Script" uid="uid://yxwr8j2k73qk" path="res://actors/enemies/skeleton/states/enemy_stun_state.gd" id="8_ibha1"]
+[ext_resource type="Script" uid="uid://ro7vo4cert5o" path="res://actors/enemies/skeleton/states/enemy_death_state.gd" id="9_jsdoj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cmhva"]
+radius = 0.35
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmhva"]
+albedo_color = Color(1, 0, 0.016666412, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_urfv6"]
+material = SubResource("StandardMaterial3D_cmhva")
+radius = 0.35
+height = 1.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_egiq0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wjcsx"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wjcsx"]
+radius = 8.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v2mj8"]
+radius = 1.5
+
+[node name="Skeleton" type="CharacterBody3D" unique_id=1001577607]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_lflov")
+data = ExtResource("2_v2mj8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1165733526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_cmhva")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=434326104]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals" unique_id=972193227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_urfv6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Visuals" unique_id=2143295527]
+transform = Transform3D(0.71971685, 0, 0, 0, 1, 0, 0, 0, 0.7063104, 0, 1.2383738, 0.25672245)
+mesh = SubResource("SphereMesh_egiq0")
+
+[node name="Components" type="Node" parent="." unique_id=2026680305]
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=976982085]
+script = ExtResource("1_mbagl")
+
+[node name="NavigationComponent" type="Node" parent="Components" unique_id=1551888045]
+script = ExtResource("3_mrd15")
+
+[node name="EnemyCombatComponent" type="Node" parent="Components" unique_id=1179228057]
+script = ExtResource("4_v2mj8")
+
+[node name="HitFlashComponent" type="Node" parent="Components" unique_id=903483237]
+script = ExtResource("6_egiq0")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1935101884]
+script = ExtResource("2_wjcsx")
+
+[node name="EnemyIdleState" type="Node" parent="StateMachine" unique_id=608052595]
+script = ExtResource("4_q4ubg")
+
+[node name="EnemyPatrolState" type="Node" parent="StateMachine" unique_id=1047029860]
+script = ExtResource("5_aim1i")
+
+[node name="EnemyChaseState" type="Node" parent="StateMachine" unique_id=1948523998]
+script = ExtResource("6_21072")
+
+[node name="EnemyAttackState" type="Node" parent="StateMachine" unique_id=882202298]
+script = ExtResource("7_ywcv0")
+
+[node name="EnemyStunState" type="Node" parent="StateMachine" unique_id=1424456535]
+script = ExtResource("8_ibha1")
+
+[node name="EnemyDeathState" type="Node" parent="StateMachine" unique_id=437812033]
+script = ExtResource("9_jsdoj")
+
+[node name="HurtboxComponent" type="Area3D" parent="." unique_id=1244665485]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("3_wjcsx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxComponent" unique_id=564470973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_wjcsx")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1230561112]
+
+[node name="DetectionArea" type="Area3D" parent="." unique_id=1579230430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea" unique_id=696517493]
+shape = SubResource("SphereShape3D_wjcsx")
+
+[node name="AttackArea" type="Area3D" parent="." unique_id=904365480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=831611674]
+shape = SubResource("SphereShape3D_v2mj8")

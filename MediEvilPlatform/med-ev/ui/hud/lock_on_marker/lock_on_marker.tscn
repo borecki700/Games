@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dwo48r4whvtbr"]
+
+[ext_resource type="Script" uid="uid://dk8vym8cce2ar" path="res://ui/hud/lock_on_marker/lock_on_marker.gd" id="1_4jgup"]
+
+[node name="LockOnMarker" type="Control" unique_id=985032313]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4jgup")
+
+[node name="MarkerIcon" type="Label" parent="." unique_id=742947490]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 32
+text = "◆"
