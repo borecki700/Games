@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo36sx8ukcge7"]
+
+[ext_resource type="Texture2D" uid="uid://ducwdtwasr8vi" path="res://Assets/WorldTileset/ladder.png" id="1_i7vrv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66sgg"]
+size = Vector2(34, 106)
+
+[node name="Ladder" type="Area2D" groups=["ladder"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_i7vrv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_66sgg")

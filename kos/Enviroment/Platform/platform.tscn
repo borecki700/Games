@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt65tj3ury3sd"]
+
+[ext_resource type="Texture2D" uid="uid://xt6ca15cok6o" path="res://Assets/WorldTileset/platforms.png" id="1_02ewi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qslyi"]
+size = Vector2(29, 8)
+
+[node name="Platform" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_02ewi")
+region_enabled = true
+region_rect = Rect2(17, 0, 31, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_qslyi")
+one_way_collision = true
